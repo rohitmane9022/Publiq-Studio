@@ -95,10 +95,10 @@ const Header = () => {
 
         
           <nav className="space-y-4">
-            <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100 rounded-md">Dashboard</a>
-            <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100 rounded-md">Projects</a>
+            <a href="/" className="block px-4 py-2 text-sm hover:bg-gray-100 rounded-md">Dashboard</a>
+            <a href="/projects" className="block px-4 py-2 text-sm hover:bg-gray-100 rounded-md">Projects</a>
             
-            <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100 rounded-md">Team</a>
+            <a href="/team" className="block px-4 py-2 text-sm hover:bg-gray-100 rounded-md">Team</a>
             
           </nav>
 

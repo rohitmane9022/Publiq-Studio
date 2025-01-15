@@ -16,7 +16,7 @@ const getInitialTasks = (): Task[] => {
     return tasks
   }
 
-  // If no stored tasks, save default tasks to localStorage
+  
   window.localStorage.setItem('tasks', JSON.stringify(tasks))
   return tasks
 }
@@ -27,7 +27,7 @@ const persistTasks = () => {
   }
 }
 
-// Initialize tasks when the module loads
+
 tasks = getInitialTasks()
 
 export const fetchTasksAPI = async (): Promise<{ data: Task[] }> => {

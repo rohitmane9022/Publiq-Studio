@@ -16,7 +16,7 @@ const getInitialTeamMembers = (): TeamMember[] => {
     return teamMembers
   }
 
-  // If no stored members, save default members to localStorage
+
   window.localStorage.setItem('teamMembers', JSON.stringify(teamMembers))
   return teamMembers
 }
@@ -27,7 +27,7 @@ const persistTeamMembers = () => {
   }
 }
 
-// Initialize team members when the module loads
+
 teamMembers = getInitialTeamMembers()
 
 export const fetchTeamMembersAPI = async (): Promise<{ data: TeamMember[] }> => {
