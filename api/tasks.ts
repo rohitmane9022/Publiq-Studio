@@ -1,20 +1,34 @@
 import { Task } from '@/types'
 
+let tasks: Task[] = [
+  { id: '1', title: 'Task 1', assignedTo: 'John Doe', deadline: '2023-12-15', status: 'In Progress', projectId: '1' },
+  { id: '2', title: 'Task 2', assignedTo: 'Jane Smith', deadline: '2023-12-20', status: 'To Do', projectId: '1' },
+]
 
 const getInitialTasks = (): Task[] => {
-  const storedTasks = localStorage.getItem('tasks')
-  return storedTasks ? JSON.parse(storedTasks) : [
-    { id: '1', title: 'Task 1', assignedTo: 'John Doe', deadline: '2023-12-15', status: 'In Progress', projectId: '1' },
-    { id: '2', title: 'Task 2', assignedTo: 'Jane Smith', deadline: '2023-12-20', status: 'To Do', projectId: '1' },
-  ]
+  if (typeof window === 'undefined') {
+    return tasks
+  }
+
+  const storedTasks = window.localStorage.getItem('tasks')
+  if (storedTasks) {
+    tasks = JSON.parse(storedTasks)
+    return tasks
+  }
+
+  // If no stored tasks, save default tasks to localStorage
+  window.localStorage.setItem('tasks', JSON.stringify(tasks))
+  return tasks
 }
-
-let tasks: Task[] = getInitialTasks()
-
 
 const persistTasks = () => {
-  localStorage.setItem('tasks', JSON.stringify(tasks))
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('tasks', JSON.stringify(tasks))
+  }
 }
+
+// Initialize tasks when the module loads
+tasks = getInitialTasks()
 
 export const fetchTasksAPI = async (): Promise<{ data: Task[] }> => {
   return new Promise((resolve) => {
@@ -40,7 +54,6 @@ export const editTaskAPI = async (task: Task): Promise<{ data: Task }> => {
     setTimeout(() => {
       const index = tasks.findIndex((t) => t.id === task.id)
       if (index !== -1) {
-       
         tasks = [
           ...tasks.slice(0, index),
           task,
