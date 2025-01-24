@@ -16,17 +16,17 @@ const initialState: ProjectsState = {
 
 export const fetchProjects = createAsyncThunk('projects/fetchProjects', async () => {
   const response = await fetchProjectsAPI()
-  return response.data
+  return response
 })
 
 export const addProject = createAsyncThunk('projects/addProject', async (project: Project) => {
   const response = await addProjectAPI(project)
-  return response.data
+  return response
 })
 
 export const editProject = createAsyncThunk('projects/editProject', async (project: Project) => {
   const response = await editProjectAPI(project)
-  return response.data
+  return response
 })
 
 export const deleteProject = createAsyncThunk('projects/deleteProject', async (projectId: string) => {
