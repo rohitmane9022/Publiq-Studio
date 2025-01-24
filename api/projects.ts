@@ -1,10 +1,5 @@
+import { Project } from '@/types'
 
-type Project = {
-  id: string;
-  name: string;
-  deadline: string;
-  progress: number;
-};
 
 
 let projects: Project[] = [
@@ -23,7 +18,7 @@ export const addProjectAPI = async (newProject): Promise<Project> => {
   return projectWithId;
 };
 
-// Edit an existing project
+
 export const editProjectAPI = async (updatedProject: Project): Promise<Project> => {
   const index = projects.findIndex((p) => p.id === updatedProject.id);
   if (index !== -1) {
@@ -34,7 +29,7 @@ export const editProjectAPI = async (updatedProject: Project): Promise<Project> 
   }
 };
 
-// Delete a project by ID
+
 export const deleteProjectAPI = async (projectId: string): Promise<void> => {
   projects = projects.filter((p) => p.id !== projectId);
 };
