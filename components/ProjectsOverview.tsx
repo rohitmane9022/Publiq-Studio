@@ -18,7 +18,7 @@ export default function ProjectsOverview() {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {projects?.slice(0, 5).map((project) => (
+          {projects?.map((project) => (
             <div key={project.id}>
               <div className="flex justify-between items-center mb-1">
                 <span className="text-sm font-medium">{project.name}</span>
