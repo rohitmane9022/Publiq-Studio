@@ -13,9 +13,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  
 
   return (
     <header className="bg-white shadow-sm relative">
@@ -35,6 +37,7 @@ const Header = () => {
               type="search"
               placeholder="Search..."
               className="pl-8 w-64"
+           
             />
           </div>
         </div>

@@ -22,6 +22,7 @@ export default function ProjectsList() {
   const [editingProjectId, setEditingProjectId] = useState<string | null>(null)
   const projects = useSelector((state: RootState) => state.projects.projects)
   const dispatch = useDispatch()
+  console.log(projects)
 
   const handleAddProject = (project: Project) => {
     dispatch(addProject(project))
@@ -39,7 +40,7 @@ export default function ProjectsList() {
 
   return (
     <div className="space-y-6">
-      {projects.map((project) => (
+      {projects?.map((project) => (
         <Accordion type="single" collapsible key={project.id}>
           <AccordionItem value={project.id}>
             <Card>

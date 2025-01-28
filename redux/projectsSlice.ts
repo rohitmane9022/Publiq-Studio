@@ -16,17 +16,17 @@ const initialState: ProjectsState = {
 
 export const fetchProjects = createAsyncThunk('projects/fetchProjects', async () => {
   const response = await fetchProjectsAPI()
-  return response
+  return response.data
 })
 
 export const addProject = createAsyncThunk('projects/addProject', async (project: Project) => {
   const response = await addProjectAPI(project)
-  return response
+  return response.data
 })
 
 export const editProject = createAsyncThunk('projects/editProject', async (project: Project) => {
   const response = await editProjectAPI(project)
-  return response
+  return response.data
 })
 
 export const deleteProject = createAsyncThunk('projects/deleteProject', async (projectId: string) => {
@@ -55,7 +55,7 @@ const projectsSlice = createSlice({
         state.projects.push(action.payload)
       })
       .addCase(editProject.fulfilled, (state, action: PayloadAction<Project>) => {
-        const index = state.projects.findIndex((project) => project.id === action.payload.id)
+        const index = state.projects.find((project) => project.id === action.payload.id)
         if (index !== -1) {
           state.projects[index] = action.payload
         }

@@ -8,6 +8,7 @@ import Link from 'next/link'
 
 export default function ProjectsOverview() {
   const projects = useSelector((state: RootState) => state.projects.projects)
+  console.log(projects)
 
 
   return (
